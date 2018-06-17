@@ -41,8 +41,5 @@ class Scraper
 
     book_details
   end
-  #For more info, use indiebound.org link
-  #Description: h4 class="blurgb-listname" (text = Description)
-  #About Author: h4 class="blurgb-listname" (text = About the Author)
-  #What Reviewers Say: div class="rating-summary" h2 text
+
 end
