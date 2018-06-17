@@ -37,7 +37,7 @@ class Scraper
     if book_scraper.css("div.book-top-section").css("div")[9].text.include?("Buy at Local Store") == false
       book_details[:about_author] = book_scraper.css("div.book-top-section").css("div")[9].text
     end
-    book_details[:rating] = book_scraper.css("div.rating-summary h2")
+    book_details[:rating] = book_scraper.css("h2.rave").text
 
     book_details
   end
