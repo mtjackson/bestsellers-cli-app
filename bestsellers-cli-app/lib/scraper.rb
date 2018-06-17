@@ -13,15 +13,18 @@ class Scraper
     self.get_page.css("section.subcategory").each do |category|
       category_list = []
       genre = category.css("h2.subcategory-heading a").attribute("data-version").text
-      category_list << genre
+      i = 1
       category.css("li").each do |book|
         if book.css("h3.title").text != ""
           category_list << {
+            :genre => genre,
+            :rank => "#{i}. ",
             :title => book.css("h3.title").text,
             :author => book.css("p.author").text,
             :description => book.css("p.description").text,
             :book_url => book.css("button").attribute("data-localbookstore").text
           }
+          i+=1
         end
       end
       scraped_books << category_list
