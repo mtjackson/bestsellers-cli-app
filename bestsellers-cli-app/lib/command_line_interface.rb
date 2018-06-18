@@ -5,14 +5,33 @@ require 'colorize'
 
 class CommandLineInterface
 
+  def call
+    puts "Welcome! Let's see what today's bestselling books are."
+    start
+  end
+
   def make_books
     book_array = Scraper.new.scrape_book_list
     BookDetails.create_from_collection(book_array)
   end
 
   def start
-    puts "What genre book would you like to see? (fiction/non-fiction)"
+    puts ""
+    puts "What genre book would you like to see? (fiction/nonfiction)"
     input = gets.strip
+
+    if input == "fiction"
+      puts ""
+      puts "Here are the top five best selling fiction books today:"
+      print_top_five("fiction")
+    elsif input == "nonfiction"
+      puts ""
+      puts "Here are the top five best selling nonfiction books today:"
+      print_top_five("nonfiction")
+    else
+      puts "I'm sorry, I don't understand that."
+      start
+    end
   end
 
   def print_top_five(genre)
@@ -20,7 +39,16 @@ class CommandLineInterface
       puts ""
       puts "---------- Top Five Best-Selling Fiction ----------"
       puts ""
-      #add code to call this from book_details
+      BookDetails.all_fiction.each do |book|
+        puts "#{book.rank}. " + "#{book.title}".colorize(:light_blue) + " #{book.author}"
+        puts "#{book.description}"
+        puts ""
+      end
+    end
+  end
+
+  def print_book_detail(book)
+  end
 
 end
 

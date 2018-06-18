@@ -18,7 +18,7 @@ class Scraper
         if book.css("h3.title").text != ""
           category_list << {
             :genre => genre,
-            :rank => "#{i}. ",
+            :rank => "#{i}",
             :title => book.css("h3.title").text,
             :author => book.css("p.author").text,
             :description => book.css("p.description").text,
