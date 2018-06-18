@@ -9,7 +9,11 @@ class BookDetails
     self.send(:author=, book_hash[:author])
     self.send(:description=, book_hash[:description])
     self.send(:url=, book_hash[:url])
-    @@all_books << self
+    if self.genre == "Fiction"
+      @@all_fiction << self
+    elsif self.genre == "Nonfiction"
+      @@all_nonfiction << self
+    end
   end
 
   def self.create_from_collection(books_array)
