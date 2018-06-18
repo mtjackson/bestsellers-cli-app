@@ -32,6 +32,28 @@ class CommandLineInterface
       puts "I'm sorry, I don't understand that."
       start
     end
+    more_info
+  end
+
+  def more_info
+    puts ""
+    puts "Would you like more information on a book? (Y/N)"
+    input = gets.strip
+    if input == "Y" || input == "y"
+      puts ""
+      puts "What book would you like more information on?"
+      puts "(select 1-5)"
+      input = gets.strip
+      #
+    elsif input == "N" || input == "n"
+      puts ""
+      puts "Goodbye!"
+      exit
+    else
+      puts ""
+      puts "I'm sorry, I don't understand that."
+      more_info
+    end
   end
 
   def print_top_five(genre)
@@ -44,10 +66,30 @@ class CommandLineInterface
         puts "#{book.description}"
         puts ""
       end
+    elsif genre == "nonfiction"
+      puts ""
+      puts "---------- Top Five Best-Selling Nonfiction ----------"
+      puts ""
+      BookDetails.all_nonfiction.each do |book|
+        puts "#{book.rank}. " + "#{book.title}".colorize(:light_blue) + " #{book.author}"
+        puts "#{book.description}"
+        puts ""
+      end
     end
   end
 
-  def print_book_detail(book)
+  def print_book_detail(book_index)
+    puts "#{book.title}".colorize(:light_blue) + " #{book.author}"
+    puts ""
+    puts "Rating:".colorize(:light_blue) + " #{book.rating}"
+    puts ""
+    puts "Summary:".colorize(:light_blue)
+    puts "#{book.summary}"
+    if book.author != ""
+      puts ""
+      puts "About the Author:".colorize(:light_blue)
+      puts "#{book.about_author}"
+    end
   end
 
 end
