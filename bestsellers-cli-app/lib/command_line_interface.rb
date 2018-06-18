@@ -6,6 +6,7 @@ require 'colorize'
 class CommandLineInterface
 
   def call
+    make_books
     puts "Welcome! Let's see what today's bestselling books are."
     start
   end
