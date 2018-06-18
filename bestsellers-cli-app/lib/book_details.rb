@@ -19,6 +19,7 @@ class BookDetails
   def self.create_from_collection(books_array)
     books_array.each do |book|
       book = BookDetails.new(book)
+    end
   end
 
   def add_book_details(details_hash)

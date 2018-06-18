@@ -1,5 +1,5 @@
-require_relative "../lib/scraper.rb"
-require_relative "..lib/book_details.rb"
+require_relative "scraper.rb"
+require_relative "book_details.rb"
 require 'nokogiri'
 require 'colorize'
 
