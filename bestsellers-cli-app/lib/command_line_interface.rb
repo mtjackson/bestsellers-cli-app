@@ -43,8 +43,10 @@ class CommandLineInterface
       puts ""
       puts "What book would you like more information on?"
       puts "(select 1-5)"
-      input = gets.strip
+      i = gets.strip
       #
+      print_book_detail(i, genre)
+      puts ""
     elsif input == "N" || input == "n"
       puts ""
       puts "Goodbye!"
@@ -78,7 +80,7 @@ class CommandLineInterface
     end
   end
 
-  def print_book_detail(book_index, genre)
+  def print_book_detail(book_rank, genre)
     puts "#{book.title}".colorize(:light_blue) + " #{book.author}"
     puts ""
     puts "Rating:".colorize(:light_blue) + " #{book.rating}"
