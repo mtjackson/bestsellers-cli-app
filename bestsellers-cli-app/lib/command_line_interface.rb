@@ -32,10 +32,10 @@ class CommandLineInterface
       puts "I'm sorry, I don't understand that."
       start
     end
-    more_info
+    more_info(input)
   end
 
-  def more_info
+  def more_info(genre)
     puts ""
     puts "Would you like more information on a book? (Y/N)"
     input = gets.strip
@@ -52,7 +52,7 @@ class CommandLineInterface
     else
       puts ""
       puts "I'm sorry, I don't understand that."
-      more_info
+      more_info(genre)
     end
   end
 
@@ -78,7 +78,7 @@ class CommandLineInterface
     end
   end
 
-  def print_book_detail(book_index)
+  def print_book_detail(book_index, genre)
     puts "#{book.title}".colorize(:light_blue) + " #{book.author}"
     puts ""
     puts "Rating:".colorize(:light_blue) + " #{book.rating}"
