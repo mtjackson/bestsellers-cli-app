@@ -5,7 +5,7 @@ class BookDetails
   @@all_nonfiction = []
 
   def initialize(book_hash)
-    self.send(:rank=, book_hash[:title])
+    self.send(:rank=, book_hash[:rank])
     self.send(:author=, book_hash[:author])
     self.send(:description=, book_hash[:description])
     self.send(:url=, book_hash[:url])
@@ -17,8 +17,10 @@ class BookDetails
   end
 
   def self.create_from_collection(books_array)
-    books_array.each do |book|
-      book = BookDetails.new(book)
+    books_array.each do |book_list|
+      book_list.each do |book|
+        book = BookDetails.new(book)
+      end
     end
   end
 

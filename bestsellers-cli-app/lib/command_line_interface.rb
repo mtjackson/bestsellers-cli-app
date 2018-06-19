@@ -12,7 +12,7 @@ class CommandLineInterface
   end
 
   def make_books
-    book_array = Scraper.new.scrape_book_list
+    book_array = Scraper.scrape_book_list
     BookDetails.create_from_collection(book_array)
   end
 
