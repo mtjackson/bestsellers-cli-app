@@ -56,9 +56,15 @@ class CommandLineInterface
       puts ""
       puts "What book would you like more information on?"
       puts "(select 1-5)"
-      i = gets.strip
-      #
-      print_book_detail(i, genre)
+      i = gets.strip.to_i
+      if i.between?(1, 5)
+        puts ""
+        print_book_detail(i, genre)
+        anything_else
+      else
+        puts "I'm sorry, I don't understand that."
+        more_info(genre)
+      end
       puts ""
     elsif input == "N" || input == "n"
       puts ""
@@ -94,16 +100,42 @@ class CommandLineInterface
   end
 
   def print_book_detail(book_rank, genre)
-    puts "#{book.title}".colorize(:light_blue) + " #{book.author}"
+    if genre == "fiction"
+      genre = "Fiction"
+    elsif genre == "nonfiction"
+      genre = "Nonfiction"
+    end
+    BookDetails.all.select do |book|
+      if book.rank == book_rank && book.genre == genre
+        puts "#{book.title}".colorize(:light_blue) + " #{book.author}"
+        puts ""
+        puts "Rating:".colorize(:light_blue) + " #{book.rating}"
+        puts ""
+        puts "Summary:".colorize(:light_blue)
+        puts "#{book.summary}"
+        if book.author != ""
+          puts ""
+          puts "About the Author:".colorize(:light_blue)
+          puts "#{book.about_author}"
+        end
+      end
+    end
+  end
+
+  def anything_else
     puts ""
-    puts "Rating:".colorize(:light_blue) + " #{book.rating}"
-    puts ""
-    puts "Summary:".colorize(:light_blue)
-    puts "#{book.summary}"
-    if book.author != ""
+    puts "Would you like to see another book? (Y/N)"
+    input = gets.strip
+    if input == "y" || input == "Y"
+      start
+    elsif input = "n" || input == "N"
       puts ""
-      puts "About the Author:".colorize(:light_blue)
-      puts "#{book.about_author}"
+      puts "Goodbye!"
+      exit
+    else
+      puts ""
+      puts "I'm sorry, I don't understand that"
+      anything_else
     end
   end
 

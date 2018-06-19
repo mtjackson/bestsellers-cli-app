@@ -1,6 +1,7 @@
 class BookDetails
   attr_accessor :rank, :title, :author, :description, :book_url, :genre, :summary, :about_author, :rating
 
+  @@all = []
   @@all_fiction = []
   @@all_nonfiction = []
 
@@ -16,6 +17,7 @@ class BookDetails
     elsif self.genre == "Nonfiction"
       @@all_nonfiction << self
     end
+    @@all << self
   end
 
   def self.create_from_collection(books_array)
@@ -38,6 +40,10 @@ class BookDetails
 
   def self.all_nonfiction
     @@all_nonfiction
+  end
+
+  def self.all
+    @@all
   end
 
 end
