@@ -29,7 +29,7 @@ class Scraper
       end
       scraped_books << category_list
     end
-    scraped_books.pop
+    scraped_books.shift
     scraped_books.pop
     scraped_books.delete_at(1)
     scraped_books
