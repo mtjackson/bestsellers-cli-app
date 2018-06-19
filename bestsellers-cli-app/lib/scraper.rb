@@ -16,7 +16,7 @@ class Scraper
       i = 1
       category.css("li").each do |book|
         if book.css("h3.title").text != ""
-          scraped_books << {
+          category_list << {
             :genre => genre,
             :rank => i,
             :title => book.css("h3.title").text,
