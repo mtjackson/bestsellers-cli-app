@@ -7,6 +7,7 @@ class CommandLineInterface
 
   def call
     make_books
+    add_book_attributes
     puts "Welcome! Let's see what today's bestselling books are."
     start
   end
@@ -14,6 +15,17 @@ class CommandLineInterface
   def make_books
     book_array = Scraper.scrape_book_list
     BookDetails.create_from_collection(book_array)
+  end
+
+  def add_book_attributes
+    BookDetails.all_fiction.each do |book|
+      details = Scraper.scrape_book_details(book.book_url)
+      book.add_book_details(details)
+    end
+    BookDetails.all_nonfiction.each do |book|
+      details = Scraper.scrape_book_details(book.book_url)
+      book.add_book_details(details)
+    end
   end
 
   def start
