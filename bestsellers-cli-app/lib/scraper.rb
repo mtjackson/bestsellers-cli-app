@@ -43,7 +43,14 @@ class Scraper
     if book_scraper.css("div.book-top-section").css("div")[9].text.include?("Buy at Local Store") == false
       book_details[:about_author] = book_scraper.css("div.book-top-section").css("div")[9].text
     end
-    book_details[:rating] = book_scraper.css("h2.rave").text
+    book_details[:publisher] = book_scraper.css("p.ibc-pub-info")[0].text.strip
+    book_details[:publish_date] = book_scraper.css("p.ibc-pub-info")[1].text.strip
+
+#    book_details[:rating] = book_scraper.css("h2.rave").text
+
+  #  book_rating_link = book_scraper.css("iframe").attribute("src")
+#    book_rating_scraper = Nokogiri::HTML(open(book_rating_link))
+#    book_details[:rating] = book_rating_scraper.css("div.rating-summary").css("h2").text
 
     book_details
   end

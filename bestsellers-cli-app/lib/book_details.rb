@@ -1,5 +1,5 @@
 class BookDetails
-  attr_accessor :rank, :title, :author, :description, :book_url, :genre, :summary, :about_author, :rating
+  attr_accessor :rank, :title, :author, :description, :book_url, :genre, :summary, :about_author, :publisher, :publish_date
 
   @@all = []
   @@all_fiction = []
@@ -30,8 +30,9 @@ class BookDetails
 
   def add_book_details(details_hash)
     self.send(:summary=, details_hash[:summary])
-    self.send(:about_author=, details_hash[:summary])
-    self.send(:rating=, details_hash[:rating])
+    self.send(:about_author=, details_hash[:about_author])
+    self.send(:publisher=, details_hash[:publisher])
+    self.send(:publish_date=, details_hash[:publish_date])
   end
 
   def self.all_fiction

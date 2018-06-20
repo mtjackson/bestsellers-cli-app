@@ -109,7 +109,9 @@ class CommandLineInterface
       if book.rank == book_rank && book.genre == genre
         puts "#{book.title}".colorize(:light_blue) + " #{book.author}"
         puts ""
-        puts "Rating:".colorize(:light_blue) + " #{book.rating}"
+        puts "Publisher:".colorize(:light_blue) + " #{book.publisher}"
+        puts ""
+        puts "Publication Date:".colorize(:light_blue) + " #{book.publish_date}"
         puts ""
         puts "Summary:".colorize(:light_blue)
         puts "#{book.summary}"
@@ -140,18 +142,3 @@ class CommandLineInterface
   end
 
 end
-
-#welcome
-#ask what genre book you'd like to see
-#get user input
-#display top five books
-#ask what book you'd like more information on
-#get user input
-#display book details
-#ask if you'd like to see another book
-#if no, thanks and exit
-#if yes, ask what genre book you'd like to see
-
-#make books
-#add book attributes from book page
-#display books
