@@ -15,5 +15,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "nokogiri", ">= 0"
   s.add_development_dependency "pry", ">= 0"
   s.add_development_dependency "colorize", ">= 0"
+  s.add_development_dependency "open-uri", ">= 0"
 
 end

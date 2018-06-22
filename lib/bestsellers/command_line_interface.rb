@@ -1,9 +1,9 @@
-require_relative "scraper.rb"
-require_relative "book_details.rb"
-require 'nokogiri'
-require 'colorize'
+#require_relative "scraper.rb"
+#require_relative "book_details.rb"
+#require 'nokogiri'
+#require 'colorize'
 
-class CommandLineInterface
+class Bestsellers::CommandLineInterface
 
   def call
     make_books

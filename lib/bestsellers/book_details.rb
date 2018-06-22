@@ -1,4 +1,4 @@
-class BookDetails
+class Bestsellers::BookDetails
   attr_accessor :rank, :title, :author, :description, :book_url, :genre, :summary, :about_author, :publisher, :publish_date
 
   @@all = []

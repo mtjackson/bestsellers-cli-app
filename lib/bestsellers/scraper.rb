@@ -1,8 +1,8 @@
-require 'pry'
-require 'nokogiri'
-require 'open-uri'
+#require 'pry'
+#require 'nokogiri'
+#require 'open-uri'
 
-class Scraper
+class Bestsellers::Scraper
 
   def self.get_page
     Nokogiri::HTML(open("https://www.nytimes.com/books/best-sellers/"))

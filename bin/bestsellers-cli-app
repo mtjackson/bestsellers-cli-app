@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/book_details.rb'
-require_relative '../lib/command_line_interface.rb'
-require_relative '../lib/scraper.rb'
+require_relative '../lib/bestsellers.rb'
+require_relative '../lib/bestsellers'
 
 
-CommandLineInterface.new.call
+Bestsellers::CommandLineInterface.new.call
