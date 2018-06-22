@@ -115,7 +115,7 @@ class Bestsellers::CommandLineInterface
         puts ""
         puts "Summary:".colorize(:light_blue)
         puts "#{book.summary}"
-        if book.author != ""
+        if book.about_author != ""
           puts ""
           puts "About the Author:".colorize(:light_blue)
           puts "#{book.about_author}"
