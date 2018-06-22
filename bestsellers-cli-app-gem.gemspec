@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.description = "Provides details on the New York Times top 5 bestselling books"
   s.authors     = ["Mary Jackson"]
   s.email       = 'jackson.marytherese@gmail.com'
-  s.files       = ["lib/book_details.rb", "lib/command_line_interface.rb", "lib/scraper.rb", "config/environment.rb"]
+  s.files       = ["lib/bestsellers/book_details.rb", "lib/bestsellers/command_line_interface.rb", "lib/bestsellers/scraper.rb", "config/environment.rb", "lib/bestsellers.rb"]
   s.homepage    = 'http://rubygems.org/gems/bestsellers-cli-app'
   s.license     = 'MIT'
   s.executables << 'bestsellers-cli-app'
