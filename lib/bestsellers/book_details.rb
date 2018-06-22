@@ -23,7 +23,7 @@ class Bestsellers::BookDetails
   def self.create_from_collection(books_array)
     books_array.each do |book_list|
       book_list.each do |book|
-        book = BookDetails.new(book)
+        book = Bestsellers::BookDetails.new(book)
       end
     end
   end

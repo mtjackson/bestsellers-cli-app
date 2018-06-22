@@ -13,17 +13,17 @@ class Bestsellers::CommandLineInterface
   end
 
   def make_books
-    book_array = Scraper.scrape_book_list
-    BookDetails.create_from_collection(book_array)
+    book_array = Bestsellers::Scraper.scrape_book_list
+    Bestsellers::BookDetails.create_from_collection(book_array)
   end
 
   def add_book_attributes
-    BookDetails.all_fiction.each do |book|
-      details = Scraper.scrape_book_details(book.book_url)
+    Bestsellers::BookDetails.all_fiction.each do |book|
+      details = Bestsellers::Scraper.scrape_book_details(book.book_url)
       book.add_book_details(details)
     end
-    BookDetails.all_nonfiction.each do |book|
-      details = Scraper.scrape_book_details(book.book_url)
+    Bestsellers::BookDetails.all_nonfiction.each do |book|
+      details = Bestsellers::Scraper.scrape_book_details(book.book_url)
       book.add_book_details(details)
     end
   end
@@ -82,7 +82,7 @@ class Bestsellers::CommandLineInterface
       puts ""
       puts "---------- Top Five Best-Selling Fiction ----------"
       puts ""
-      BookDetails.all_fiction.each do |book|
+      Bestsellers::BookDetails.all_fiction.each do |book|
         puts "#{book.rank}. " + "#{book.title}".colorize(:light_blue) + " #{book.author}"
         puts "#{book.description}"
         puts ""
@@ -91,7 +91,7 @@ class Bestsellers::CommandLineInterface
       puts ""
       puts "---------- Top Five Best-Selling Nonfiction ----------"
       puts ""
-      BookDetails.all_nonfiction.each do |book|
+      Bestsellers::BookDetails.all_nonfiction.each do |book|
         puts "#{book.rank}. " + "#{book.title}".colorize(:light_blue) + " #{book.author}"
         puts "#{book.description}"
         puts ""
@@ -105,7 +105,7 @@ class Bestsellers::CommandLineInterface
     elsif genre == "nonfiction"
       genre = "Nonfiction"
     end
-    BookDetails.all.select do |book|
+    Bestsellers::BookDetails.all.select do |book|
       if book.rank == book_rank && book.genre == genre
         puts "#{book.title}".colorize(:light_blue) + " #{book.author}"
         puts ""
