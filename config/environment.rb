@@ -1,7 +1,8 @@
 require 'pry'
 require 'nokogiri'
 require 'open-uri'
+require 'colorize'
 
-require_relative '..lib/book_details'
-require_relative '..lib/command_line_interface'
-require_relative '..lib/scraper'
+require_relative '../lib/bestsellers/book_details.rb'
+require_relative '../lib/bestsellers/command_line_interface.rb'
+require_relative '../lib/bestsellers/scraper.rb'
