@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/book_details.rb'
+require_relative '../lib/command_line_interface.rb'
+require_relative '../lib/scraper.rb'
+
+
+CommandLineInterface.new.call
