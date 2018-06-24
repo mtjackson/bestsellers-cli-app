@@ -44,7 +44,7 @@ class Bestsellers::Scraper
       book_details[:about_author] = book_scraper.css("div.book-top-section").css("div")[9].text
     end
     book_details[:publisher] = book_scraper.css("p.ibc-pub-info")[0].text.strip
-    book_details[:publish_date] = book_scraper.css("p.ibc-pub-info")[1].text.strip
+    book_details[:publish_date] = book_scraper.css("p.ibc-pub-info span").text.strip
 
 #    book_details[:rating] = book_scraper.css("h2.rave").text
 
