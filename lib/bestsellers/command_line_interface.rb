@@ -8,6 +8,7 @@ class Bestsellers::CommandLineInterface
   def call
     make_books
     add_book_attributes
+    puts ""
     puts "Welcome! Let's see what today's bestselling books are."
     start
   end
