@@ -1,8 +1,3 @@
-#require_relative "scraper.rb"
-#require_relative "book_details.rb"
-#require 'nokogiri'
-#require 'colorize'
-
 class Bestsellers::CommandLineInterface
 
   def call
@@ -101,11 +96,7 @@ class Bestsellers::CommandLineInterface
   end
 
   def print_book_detail(book_rank, genre)
-    if genre == "fiction"
-      genre = "Fiction"
-    elsif genre == "nonfiction"
-      genre = "Nonfiction"
-    end
+    genre[0] = genre[0].upcase
     Bestsellers::BookDetails.all.select do |book|
       if book.rank == book_rank && book.genre == genre
         puts "#{book.title}".colorize(:light_blue) + " #{book.author}"
@@ -134,6 +125,7 @@ class Bestsellers::CommandLineInterface
     elsif input = "n" || input == "N"
       puts ""
       puts "Goodbye!"
+
       exit
     else
       puts ""
