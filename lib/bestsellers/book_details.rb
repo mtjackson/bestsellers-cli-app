@@ -2,8 +2,6 @@ class Bestsellers::BookDetails
   attr_accessor :rank, :title, :author, :description, :book_url, :genre, :summary, :about_author, :publisher, :publish_date
 
   @@all = []
-  @@all_fiction = []
-  @@all_nonfiction = []
 
   def initialize(book_hash)
     self.send(:rank=, book_hash[:rank])
@@ -12,35 +10,32 @@ class Bestsellers::BookDetails
     self.send(:description=, book_hash[:description])
     self.send(:book_url=, book_hash[:book_url])
     self.send(:genre=, book_hash[:genre])
-    if self.genre == "Fiction"
-      @@all_fiction << self
-    elsif self.genre == "Nonfiction"
-      @@all_nonfiction << self
-    end
+
     @@all << self
   end
 
   def self.create_from_collection(books_array)
-    books_array.each do |book_list|
-      book_list.each do |book|
-        book = Bestsellers::BookDetails.new(book)
-      end
+    books_array.each do |book|
+      Bestsellers::BookDetails.new(book)
     end
   end
 
   def add_book_details(details_hash)
-    self.send(:summary=, details_hash[:summary])
-    self.send(:about_author=, details_hash[:about_author])
-    self.send(:publisher=, details_hash[:publisher])
-    self.send(:publish_date=, details_hash[:publish_date])
+    details_hash.each do |attribute, value|
+      self.send(:"#{attribute}=", value)
+    end
   end
 
   def self.all_fiction
-    @@all_fiction
+    @@all.select do |book|
+      book.genre == "Fiction"
+    end
   end
 
   def self.all_nonfiction
-    @@all_nonfiction
+    @@all.select do |book|
+      book.genre == "Nonfiction"
+    end
   end
 
   def self.all
