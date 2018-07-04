@@ -10,13 +10,17 @@ class Bestsellers::Scraper
 
   def self.scrape_book_list
     scraped_books = []
+    urls = ["/books/best-sellers/hardcover-fiction/", "/books/best-sellers/hardcover-nonfiction/"]
     self.get_page.css("section.subcategory").each do |category|
       category_list = []
       genre = category.css("h2.subcategory-heading a").attribute("data-version").text
       i = 1
+      url = category.css("h2 a").attribute('href').value
+      next unless urls.include?(url)
       category.css("li").each do |book|
-        if book.css("h3.title").text != ""
-          category_list << {
+
+        if book.css("h3.title").text != "" && urls.include?(url)
+          scraped_books << {
             :genre => genre,
             :rank => i,
             :title => book.css("h3.title").text,
@@ -27,11 +31,7 @@ class Bestsellers::Scraper
           i+=1
         end
       end
-      scraped_books << category_list
     end
-    scraped_books.shift
-    scraped_books.pop
-    scraped_books.delete_at(1)
     scraped_books
   end
 
