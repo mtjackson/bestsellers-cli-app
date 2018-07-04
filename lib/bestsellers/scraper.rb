@@ -39,9 +39,9 @@ class Bestsellers::Scraper
     book_scraper = Nokogiri::HTML(open(book_url))
     book_details = {}
 
-    book_details[:summary] = book_scraper.css("div.book-top-section").css("div")[8].text
+    book_details[:summary] = book_scraper.css("div.book-top-section").css("div")[8].text.strip
     if book_scraper.css("div.book-top-section").css("div")[9].text.include?("Buy at Local Store") == false
-      book_details[:about_author] = book_scraper.css("div.book-top-section").css("div")[9].text
+      book_details[:about_author] = book_scraper.css("div.book-top-section").css("div")[9].text.strip
     end
     book_details[:publisher] = book_scraper.css("p.ibc-pub-info")[0].text.strip
     book_details[:publish_date] = book_scraper.css("p.ibc-pub-info span").text.strip
