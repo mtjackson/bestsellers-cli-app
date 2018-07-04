@@ -1,7 +1,3 @@
-#require 'pry'
-#require 'nokogiri'
-#require 'open-uri'
-
 class Bestsellers::Scraper
 
   def self.get_page
@@ -45,12 +41,6 @@ class Bestsellers::Scraper
     end
     book_details[:publisher] = book_scraper.css("p.ibc-pub-info")[0].text.strip
     book_details[:publish_date] = book_scraper.css("p.ibc-pub-info span").text.strip
-
-#    book_details[:rating] = book_scraper.css("h2.rave").text
-
-  #  book_rating_link = book_scraper.css("iframe").attribute("src")
-#    book_rating_scraper = Nokogiri::HTML(open(book_rating_link))
-#    book_details[:rating] = book_rating_scraper.css("div.rating-summary").css("h2").text
 
     book_details
   end
